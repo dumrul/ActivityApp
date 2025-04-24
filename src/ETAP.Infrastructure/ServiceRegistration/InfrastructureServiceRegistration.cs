@@ -1,7 +1,9 @@
 
 using Ardalis.Specification;
 using Ardalis.Specification.EntityFrameworkCore;
+using ETAP.Application.Interfaces;
 using ETAP.Infrastructure.Persistence;
+using ETAP.Infrastructure.Persistence.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +28,8 @@ namespace ETAP.Infrastructure.ServiceRegistration
 
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped(typeof(IReadRepositoryBase<>), typeof(RepositoryBase<>));
+
+            services.AddScoped<IUnitOfWork, EfUnitOfWork>();
 
             // İleride başka altyapı servisleri buraya eklenebilir (örneğin e-posta, dosya sistemi vs.)
 

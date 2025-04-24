@@ -20,11 +20,11 @@ namespace ETAP.Domain.Entities
 
         // Organizasyonu temsil eder
         public Guid OrganizationId { get; set; }
-        public required Organization Organization { get; set; }
+        public Organization Organization { get; set; } = null!;
 
         // Etkinlik oluşturucusu (Organizatör)
         public Guid OrganizerId { get; set; }
-        public required AppUser Organizer { get; set; }
+        public AppUser Organizer { get; private set; } = null!;
 
         public ICollection<ActivityParticipant> Participants { get; set; } = new List<ActivityParticipant>();
 
